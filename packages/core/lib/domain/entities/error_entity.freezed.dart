@@ -20,7 +20,6 @@ ErrorEntity _$ErrorEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ErrorEntity {
-  int? get code => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $ErrorEntityCopyWith<$Res> {
           ErrorEntity value, $Res Function(ErrorEntity) then) =
       _$ErrorEntityCopyWithImpl<$Res, ErrorEntity>;
   @useResult
-  $Res call({int? code, String message});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -51,14 +50,9 @@ class _$ErrorEntityCopyWithImpl<$Res, $Val extends ErrorEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
     Object? message = null,
   }) {
     return _then(_value.copyWith(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$_ErrorEntityCopyWith<$Res>
       __$$_ErrorEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? code, String message});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -89,14 +83,9 @@ class __$$_ErrorEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
     Object? message = null,
   }) {
     return _then(_$_ErrorEntity(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -108,19 +97,17 @@ class __$$_ErrorEntityCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ErrorEntity with DiagnosticableTreeMixin implements _ErrorEntity {
-  const _$_ErrorEntity({this.code, required this.message});
+  const _$_ErrorEntity({required this.message});
 
   factory _$_ErrorEntity.fromJson(Map<String, dynamic> json) =>
       _$$_ErrorEntityFromJson(json);
 
   @override
-  final int? code;
-  @override
   final String message;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ErrorEntity(code: $code, message: $message)';
+    return 'ErrorEntity(message: $message)';
   }
 
   @override
@@ -128,7 +115,6 @@ class _$_ErrorEntity with DiagnosticableTreeMixin implements _ErrorEntity {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ErrorEntity'))
-      ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('message', message));
   }
 
@@ -137,13 +123,12 @@ class _$_ErrorEntity with DiagnosticableTreeMixin implements _ErrorEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ErrorEntity &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -160,14 +145,11 @@ class _$_ErrorEntity with DiagnosticableTreeMixin implements _ErrorEntity {
 }
 
 abstract class _ErrorEntity implements ErrorEntity {
-  const factory _ErrorEntity({final int? code, required final String message}) =
-      _$_ErrorEntity;
+  const factory _ErrorEntity({required final String message}) = _$_ErrorEntity;
 
   factory _ErrorEntity.fromJson(Map<String, dynamic> json) =
       _$_ErrorEntity.fromJson;
 
-  @override
-  int? get code;
   @override
   String get message;
   @override

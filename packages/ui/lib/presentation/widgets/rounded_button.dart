@@ -7,6 +7,9 @@ class RoundedButton extends StatelessWidget {
   final bool disableUppercase;
   final Color? backgroundColor;
   final VoidCallback? onPressed;
+  final Size? minimumSize;
+  final Color? color;
+  final double? letterSpacing;
 
   const RoundedButton({
     super.key,
@@ -16,6 +19,9 @@ class RoundedButton extends StatelessWidget {
     this.iconWidget,
     this.backgroundColor,
     this.disableUppercase = false,
+    this.minimumSize,
+    this.color,
+    this.letterSpacing,
   });
 
   @override
@@ -23,25 +29,33 @@ class RoundedButton extends StatelessWidget {
     if (!_backgroundColorIsDefined) {
       return OutlinedButton(
         onPressed: onPressed,
-        style: OutlinedButton.styleFrom(backgroundColor: backgroundColor),
+        style: OutlinedButton.styleFrom(
+            backgroundColor: backgroundColor, minimumSize: minimumSize),
         child: _renderButtonContent,
       );
     }
 
     return ElevatedButton(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(backgroundColor: backgroundColor),
+      style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor, minimumSize: minimumSize),
       child: _renderButtonContent,
     );
   }
 
   bool get _backgroundColorIsDefined => backgroundColor != null;
 
+  Color get _textColor {
+    if (color != null) return color!;
+
+    return _backgroundColorIsDefined ? Colors.white : const Color(0xFF6a6a6a);
+  }
+
   TextStyle get _textStyle {
     return TextStyle(
-      color: _backgroundColorIsDefined ? Colors.white : const Color(0xFF6a6a6a),
+      color: _textColor,
       fontWeight: FontWeight.w700,
-      letterSpacing: 0.107,
+      letterSpacing: letterSpacing ?? 1.107,
     );
   }
 
@@ -49,7 +63,7 @@ class RoundedButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (icon != null) Icon(icon),
+        if (icon != null) Icon(icon, color: Colors.white),
         if (iconWidget != null) iconWidget!,
         if (icon != null || iconWidget != null) const SizedBox(width: 10),
         Text(disableUppercase ? text : text.toUpperCase(), style: _textStyle),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui/presentation/widgets/widgets.dart';
+import 'package:ui/themes/themes.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -10,12 +11,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class LoginFormState extends State<LoginForm> {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,19 +33,32 @@ class LoginFormState extends State<LoginForm> {
             isPassword: true,
             validator: (String value) => value.isNotEmpty,
           ),
-          // const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              // Validate returns true if the form is valid, or false otherwise.
-              if (_formKey.currentState!.validate()) {
-                // If the form is valid, display a snackbar. In the real world,
-                // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
-              }
-            },
-            child: const Text('Submit'),
+          const SizedBox(height: 16),
+          const GoRouterLink(
+            text: 'Forgot your password?',
+            path: '/auth/forgot_password',
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomCheckbox(
+                value: true,
+                onChanged: (_) {},
+                label: const Text(
+                  'Remember me',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+              ),
+              RoundedButton(
+                text: "Log in",
+                onPressed: () {},
+                color: Colors.black,
+                minimumSize: const Size(121, 55),
+                letterSpacing: 1.498,
+                backgroundColor: LightTheme.primaryColor,
+              )
+            ],
           ),
         ],
       ),

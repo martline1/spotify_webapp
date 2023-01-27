@@ -7,13 +7,13 @@ import 'auth_state.dart';
 
 part 'auth_event.dart';
 
-/// [Bloc]s comunicate to [usecases] to receive [models],
-/// during the collection of [models] or afterwards, they can [emit] states.
+/// [Bloc]s comunicate to [usecases] to receive [dtos],
+/// during the collection of [dtos] or afterwards, they can [emit] states.
 ///
 /// Sometimes [Bloc]s send events to other [Bloc]s.
 ///
 /// It is preferable to have a minimal logic defined in the [Bloc],
-/// and must of the logic defined in the [usecases].
+/// and must of the logic defined in the [dtos].
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   static final initialState = AuthState(
     loggedIn: false,

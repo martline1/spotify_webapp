@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class LightTheme {
   static const primaryColor = Color(0xFF1ed760);
 
+  static const darkPrimaryColor = Color(0xFF117a37);
+
   static const borderWidth = 2.8;
 
-  static final themeData = ThemeData.light().copyWith(
+  static final themeData = ThemeData(
+    brightness: Brightness.light,
     primaryColor: primaryColor,
+    fontFamily: "SpotifyCircular",
+    useMaterial3: true,
 
     // Custom Text Styles
     textTheme: const TextTheme(
@@ -14,7 +19,19 @@ class LightTheme {
         fontSize: 14,
         height: 1.25,
         fontWeight: FontWeight.w900,
+        color: Colors.black,
       ),
+      headline2: TextStyle(
+        height: 1.5,
+        fontWeight: FontWeight.w900,
+        color: Colors.black,
+        fontSize: 18,
+      ),
+    ),
+
+    // Chwckbox Styles
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.all(const Color(0xFF169b45)),
     ),
 
     // Rounded Colored Button Styles

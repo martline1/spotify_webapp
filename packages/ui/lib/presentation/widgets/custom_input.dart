@@ -26,26 +26,19 @@ class CustomInput extends StatelessWidget {
           Text(
             label!,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 15,
               height: 1.25,
               fontWeight: FontWeight.w700,
             ),
           ),
         if (label != null) const SizedBox(height: 8),
-        TextFormField(
+        TextField(
           obscureText: isPassword,
           enableSuggestions: !isPassword,
           autocorrect: !isPassword,
           cursorColor: Colors.black,
           keyboardType: keyboardType,
           decoration: InputDecoration(hintText: hintText),
-          validator: (String? rawValue) {
-            String value = rawValue ?? '';
-
-            bool isValid = validator(value);
-
-            return isValid ? null : '';
-          },
         ),
       ],
     );

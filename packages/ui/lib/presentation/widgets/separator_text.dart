@@ -20,7 +20,7 @@ class SeparatorText extends StatelessWidget {
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w700,
-              color: Color(0xFF6a6a6a),
+              color: Colors.black,
             ),
           ),
         ),

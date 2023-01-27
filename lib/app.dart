@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:spotify_webapp/navigation/router.dart';
 import 'package:ui/themes/themes.dart';
-import 'package:core/navigation/core_router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: coreRouter,
+      routerConfig: router,
       theme: LightTheme.themeData,
     );
   }

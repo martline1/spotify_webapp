@@ -1,15 +1,15 @@
 name: ui
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
-publish_to: 'none'
+publish_to: "none"
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=2.18.6 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter_svg: ^1.1.6
+  go_router: ^6.0.1
 
   flutter:
     sdk: flutter
@@ -19,39 +19,32 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
-
-  # To add assets to your package, add an assets section, like this:
   assets:
     - assets/images/
-  #   - images/a_dot_ham.jpeg
-  #
-  # For details regarding assets in packages, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  #
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # To add custom fonts to your package, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts in packages, see
-  # https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: SpotifyCircular
+      fonts:
+        - asset: assets/fonts/spotify_circular/CircularStd-Black.otf
+          weight: 900
+        - asset: assets/fonts/spotify_circular/CircularStd-BlackItalic.otf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/spotify_circular/CircularStd-Bold.otf
+          weight: 700
+        - asset: assets/fonts/spotify_circular/CircularStd-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/spotify_circular/CircularStd-Book.otf
+        - asset: assets/fonts/spotify_circular/CircularStd-BookItalic.otf
+          style: italic
+        - asset: assets/fonts/spotify_circular/CircularStd-Light Italic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/spotify_circular/CircularStd-Light.otf
+          weight: 300
+        - asset: assets/fonts/spotify_circular/CircularStd-Medium.otf
+          weight: 500
+        - asset: assets/fonts/spotify_circular/CircularStd-MediumItalic.otf
+          weight: 500
+          style: italic

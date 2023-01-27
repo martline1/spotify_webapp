@@ -7,7 +7,6 @@ part 'error_entity.g.dart';
 @freezed
 class ErrorEntity with _$ErrorEntity {
   const factory ErrorEntity({
-    int? code,
     required String message,
   }) = _ErrorEntity;
 

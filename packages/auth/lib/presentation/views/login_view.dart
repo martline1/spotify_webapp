@@ -30,6 +30,18 @@ class LoginView extends StatelessWidget {
                   const SeparatorText(text: 'OR'),
                   const SizedBox(height: 10),
                   const LoginForm(),
+                  const SizedBox(height: 14),
+                  Row(children: const [ExpandedDivider()]),
+                  const SizedBox(height: 30),
+                  Text(
+                    'Don\'t have an account?',
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                  const SizedBox(height: 20),
+                  RoundedButton(
+                    onPressed: () {},
+                    text: 'Sign up for Spotify',
+                  ),
                 ],
               ),
             ),
