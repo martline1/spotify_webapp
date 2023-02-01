@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui/presentation/widgets/widgets.dart';
-import 'package:ui/themes/themes.dart';
+import 'package:auth/presentation/widgets/login_form_actions.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -13,6 +13,17 @@ class LoginForm extends StatefulWidget {
 class LoginFormState extends State<LoginForm> {
   final formKey = GlobalKey<FormState>();
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -21,17 +32,27 @@ class LoginFormState extends State<LoginForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomInput(
+            controller: emailController,
             label: 'Email address or username',
             hintText: 'Email address or username',
             keyboardType: TextInputType.emailAddress,
-            validator: (String value) => value.contains("@"),
+            validator: (String value) {
+              if (value.contains("@")) return null;
+
+              return 'Please enter your Spotify username or email address.';
+            },
           ),
           const SizedBox(height: 16),
           CustomInput(
+            controller: passwordController,
             label: 'Password',
             hintText: 'Password',
             isPassword: true,
-            validator: (String value) => value.isNotEmpty,
+            validator: (String value) {
+              if (value.isNotEmpty) return null;
+
+              return 'Please enter your password.';
+            },
           ),
           const SizedBox(height: 16),
           const GoRouterLink(
@@ -39,26 +60,10 @@ class LoginFormState extends State<LoginForm> {
             path: '/auth/forgot_password',
           ),
           const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomCheckbox(
-                value: true,
-                onChanged: (_) {},
-                label: const Text(
-                  'Remember me',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                ),
-              ),
-              RoundedButton(
-                text: "Log in",
-                onPressed: () {},
-                color: Colors.black,
-                minimumSize: const Size(121, 55),
-                letterSpacing: 1.498,
-                backgroundColor: LightTheme.primaryColor,
-              )
-            ],
+          LoginFormActions(
+            formKey: formKey,
+            emailController: emailController,
+            passwordController: passwordController,
           ),
         ],
       ),

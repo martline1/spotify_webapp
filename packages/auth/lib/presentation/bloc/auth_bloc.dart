@@ -17,6 +17,7 @@ part 'auth_event.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   static final initialState = AuthState(
     loggedIn: false,
+    rememberMe: false,
     user: UserDto.empty(),
   );
 
@@ -36,6 +37,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<LogoutEvent>((event, emit) async {
       emit(state.copyWith(loggedIn: false, user: UserDto.empty()));
+    });
+
+    on<ToggleRememberMeEvent>((event, emit) async {
+      emit(state.copyWith(rememberMe: !state.rememberMe));
     });
   }
 }

@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
   const factory AuthState({
     required bool loggedIn,
     required UserDto user,
+    @Default(false) bool rememberMe,
     @Default(false) bool loginLoading,
     @Default('') String loginErrorMessage,
   }) = _AuthState;

@@ -1,5 +1,4 @@
 import 'package:core/domain/entities/error_entity.dart';
-import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:auth/data/datasources/remote/remote.dart';
@@ -20,8 +19,6 @@ class AuthRepository {
       });
 
       return Either.right(UserDto.fromJson(result.data));
-    } on DioError catch (error) {
-      return Either.left(ErrorEntity(message: error.message));
     } catch (error) {
       return Either.left(
         const ErrorEntity(

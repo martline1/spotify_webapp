@@ -32,6 +32,9 @@ class LightTheme {
     // Chwckbox Styles
     checkboxTheme: CheckboxThemeData(
       fillColor: MaterialStateProperty.all(const Color(0xFF169b45)),
+      side: MaterialStateBorderSide.resolveWith(
+        (states) => const BorderSide(width: 1.0, color: Color(0xFF878787)),
+      ),
     ),
 
     // Rounded Colored Button Styles
@@ -50,6 +53,7 @@ class LightTheme {
     inputDecorationTheme: const InputDecorationTheme(
       errorStyle: TextStyle(height: 0.01, color: Colors.transparent),
       border: OutlineInputBorder(),
+      contentPadding: EdgeInsets.all(14),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.black, width: borderWidth),
       ),

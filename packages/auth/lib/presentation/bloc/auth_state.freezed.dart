@@ -22,6 +22,7 @@ AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
 mixin _$AuthState {
   bool get loggedIn => throw _privateConstructorUsedError;
   UserDto get user => throw _privateConstructorUsedError;
+  bool get rememberMe => throw _privateConstructorUsedError;
   bool get loginLoading => throw _privateConstructorUsedError;
   String get loginErrorMessage => throw _privateConstructorUsedError;
 
@@ -39,6 +40,7 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {bool loggedIn,
       UserDto user,
+      bool rememberMe,
       bool loginLoading,
       String loginErrorMessage});
 
@@ -60,6 +62,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? loggedIn = null,
     Object? user = null,
+    Object? rememberMe = null,
     Object? loginLoading = null,
     Object? loginErrorMessage = null,
   }) {
@@ -72,6 +75,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      rememberMe: null == rememberMe
+          ? _value.rememberMe
+          : rememberMe // ignore: cast_nullable_to_non_nullable
+              as bool,
       loginLoading: null == loginLoading
           ? _value.loginLoading
           : loginLoading // ignore: cast_nullable_to_non_nullable
@@ -102,6 +109,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call(
       {bool loggedIn,
       UserDto user,
+      bool rememberMe,
       bool loginLoading,
       String loginErrorMessage});
 
@@ -122,6 +130,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? loggedIn = null,
     Object? user = null,
+    Object? rememberMe = null,
     Object? loginLoading = null,
     Object? loginErrorMessage = null,
   }) {
@@ -134,6 +143,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      rememberMe: null == rememberMe
+          ? _value.rememberMe
+          : rememberMe // ignore: cast_nullable_to_non_nullable
+              as bool,
       loginLoading: null == loginLoading
           ? _value.loginLoading
           : loginLoading // ignore: cast_nullable_to_non_nullable
@@ -152,6 +165,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
   const _$_AuthState(
       {required this.loggedIn,
       required this.user,
+      this.rememberMe = false,
       this.loginLoading = false,
       this.loginErrorMessage = ''});
 
@@ -164,6 +178,9 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
   final UserDto user;
   @override
   @JsonKey()
+  final bool rememberMe;
+  @override
+  @JsonKey()
   final bool loginLoading;
   @override
   @JsonKey()
@@ -171,7 +188,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(loggedIn: $loggedIn, user: $user, loginLoading: $loginLoading, loginErrorMessage: $loginErrorMessage)';
+    return 'AuthState(loggedIn: $loggedIn, user: $user, rememberMe: $rememberMe, loginLoading: $loginLoading, loginErrorMessage: $loginErrorMessage)';
   }
 
   @override
@@ -181,6 +198,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
       ..add(DiagnosticsProperty('type', 'AuthState'))
       ..add(DiagnosticsProperty('loggedIn', loggedIn))
       ..add(DiagnosticsProperty('user', user))
+      ..add(DiagnosticsProperty('rememberMe', rememberMe))
       ..add(DiagnosticsProperty('loginLoading', loginLoading))
       ..add(DiagnosticsProperty('loginErrorMessage', loginErrorMessage));
   }
@@ -193,6 +211,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
             (identical(other.loggedIn, loggedIn) ||
                 other.loggedIn == loggedIn) &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(other.rememberMe, rememberMe) ||
+                other.rememberMe == rememberMe) &&
             (identical(other.loginLoading, loginLoading) ||
                 other.loginLoading == loginLoading) &&
             (identical(other.loginErrorMessage, loginErrorMessage) ||
@@ -201,8 +221,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, loggedIn, user, loginLoading, loginErrorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, loggedIn, user, rememberMe, loginLoading, loginErrorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -222,6 +242,7 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required final bool loggedIn,
       required final UserDto user,
+      final bool rememberMe,
       final bool loginLoading,
       final String loginErrorMessage}) = _$_AuthState;
 
@@ -232,6 +253,8 @@ abstract class _AuthState implements AuthState {
   bool get loggedIn;
   @override
   UserDto get user;
+  @override
+  bool get rememberMe;
   @override
   bool get loginLoading;
   @override

@@ -5,6 +5,7 @@ class RoundedButton extends StatelessWidget {
   final IconData? icon;
   final Widget? iconWidget;
   final bool disableUppercase;
+  final bool disabled;
   final Color? backgroundColor;
   final VoidCallback? onPressed;
   final Size? minimumSize;
@@ -14,11 +15,12 @@ class RoundedButton extends StatelessWidget {
   const RoundedButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.icon,
     this.iconWidget,
     this.backgroundColor,
     this.disableUppercase = false,
+    this.disabled = false,
     this.minimumSize,
     this.color,
     this.letterSpacing,
@@ -26,19 +28,33 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: disabled ? 0.3 : 1.0,
+      duration: const Duration(milliseconds: 200),
+      child: _button,
+    );
+  }
+
+  ButtonStyleButton get _button {
     if (!_backgroundColorIsDefined) {
       return OutlinedButton(
-        onPressed: onPressed,
+        onPressed: disabled ? null : onPressed,
         style: OutlinedButton.styleFrom(
-            backgroundColor: backgroundColor, minimumSize: minimumSize),
+          backgroundColor: backgroundColor,
+          disabledBackgroundColor: backgroundColor,
+          minimumSize: minimumSize,
+        ),
         child: _renderButtonContent,
       );
     }
 
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: disabled ? null : onPressed,
       style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor, minimumSize: minimumSize),
+        backgroundColor: backgroundColor,
+        disabledBackgroundColor: backgroundColor,
+        minimumSize: minimumSize,
+      ),
       child: _renderButtonContent,
     );
   }
