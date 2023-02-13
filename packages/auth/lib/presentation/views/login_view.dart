@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:routing/presentation/bloc/routing_bloc.dart';
 import 'package:ui/presentation/widgets/widgets.dart';
 import 'package:auth/presentation/widgets/widgets.dart';
 
@@ -41,7 +43,11 @@ class LoginView extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     RoundedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context
+                            .read<RoutingBloc>()
+                            .add(PushEvent('/auth/sing_up'));
+                      },
                       text: 'Sign up for Spotify',
                     ),
                   ],

@@ -25,6 +25,8 @@ dependencies:
     path: ../core
   ui:
     path: ../ui
+  routing:
+    path: ../routing
 
 dev_dependencies:
   # Freezed

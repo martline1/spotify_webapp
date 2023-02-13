@@ -6,19 +6,18 @@ import 'package:auth/data/dtos/dtos.dart';
 import 'package:core/domain/entities/entities.dart';
 
 class AuthRepository {
-  static final AuthDatasource client = AuthDatasource();
+  final AuthDatasource authDatasource;
 
-  static Future<Either<ErrorEntity, UserDto>> login(
+  AuthRepository({required this.authDatasource});
+
+  Future<Either<ErrorEntity, UserDto>> login(
     String email,
     String password,
   ) async {
     try {
-      final result = await client.dio.post('/login', data: {
-        "email": email,
-        "password": password,
-      });
+      final result = await authDatasource.login(email, password);
 
-      return Either.right(UserDto.fromJson(result.data));
+      return Either.right(UserDto.fromJson(result));
     } catch (error) {
       return Either.left(
         const ErrorEntity(

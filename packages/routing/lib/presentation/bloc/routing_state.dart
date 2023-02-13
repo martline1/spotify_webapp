@@ -8,8 +8,9 @@ part 'routing_state.g.dart';
 class RoutingState with _$RoutingState {
   const factory RoutingState({
     required String routeName,
-    @Default(false) bool firePop,
-    @Default({}) Object? arguments,
+    @Default(null) Object? arguments,
+    @Default(true) bool pushExecuted,
+    @Default(true) bool popExecuted,
   }) = _RoutingState;
 
   factory RoutingState.fromJson(Map<String, Object?> json) =>

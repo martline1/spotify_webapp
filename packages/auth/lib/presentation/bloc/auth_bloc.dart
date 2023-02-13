@@ -15,17 +15,19 @@ part 'auth_event.dart';
 /// It is preferable to have a minimal logic defined in the [Bloc],
 /// and must of the logic defined in the [dtos].
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final LoginUsecase loginUsecase;
+
   static final initialState = AuthState(
     loggedIn: false,
     rememberMe: false,
     user: UserDto.empty(),
   );
 
-  AuthBloc() : super(initialState) {
+  AuthBloc({required this.loginUsecase}) : super(initialState) {
     on<LoginEvent>((event, emit) async {
       emit(state.copyWith(loginLoading: true));
 
-      final errorOrUser = await LoginUsecase.call(event);
+      final errorOrUser = await loginUsecase.call(event);
 
       errorOrUser.fold(
         (error) => emit(state.copyWith(loginErrorMessage: error.message)),

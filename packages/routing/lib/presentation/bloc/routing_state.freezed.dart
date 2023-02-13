@@ -21,8 +21,9 @@ RoutingState _$RoutingStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RoutingState {
   String get routeName => throw _privateConstructorUsedError;
-  bool get firePop => throw _privateConstructorUsedError;
   Object? get arguments => throw _privateConstructorUsedError;
+  bool get pushExecuted => throw _privateConstructorUsedError;
+  bool get popExecuted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,11 @@ abstract class $RoutingStateCopyWith<$Res> {
           RoutingState value, $Res Function(RoutingState) then) =
       _$RoutingStateCopyWithImpl<$Res, RoutingState>;
   @useResult
-  $Res call({String routeName, bool firePop, Object? arguments});
+  $Res call(
+      {String routeName,
+      Object? arguments,
+      bool pushExecuted,
+      bool popExecuted});
 }
 
 /// @nodoc
@@ -53,19 +58,24 @@ class _$RoutingStateCopyWithImpl<$Res, $Val extends RoutingState>
   @override
   $Res call({
     Object? routeName = null,
-    Object? firePop = null,
     Object? arguments = freezed,
+    Object? pushExecuted = null,
+    Object? popExecuted = null,
   }) {
     return _then(_value.copyWith(
       routeName: null == routeName
           ? _value.routeName
           : routeName // ignore: cast_nullable_to_non_nullable
               as String,
-      firePop: null == firePop
-          ? _value.firePop
-          : firePop // ignore: cast_nullable_to_non_nullable
-              as bool,
       arguments: freezed == arguments ? _value.arguments : arguments,
+      pushExecuted: null == pushExecuted
+          ? _value.pushExecuted
+          : pushExecuted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      popExecuted: null == popExecuted
+          ? _value.popExecuted
+          : popExecuted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -78,7 +88,11 @@ abstract class _$$_RoutingStateCopyWith<$Res>
       __$$_RoutingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String routeName, bool firePop, Object? arguments});
+  $Res call(
+      {String routeName,
+      Object? arguments,
+      bool pushExecuted,
+      bool popExecuted});
 }
 
 /// @nodoc
@@ -93,19 +107,24 @@ class __$$_RoutingStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? routeName = null,
-    Object? firePop = null,
     Object? arguments = freezed,
+    Object? pushExecuted = null,
+    Object? popExecuted = null,
   }) {
     return _then(_$_RoutingState(
       routeName: null == routeName
           ? _value.routeName
           : routeName // ignore: cast_nullable_to_non_nullable
               as String,
-      firePop: null == firePop
-          ? _value.firePop
-          : firePop // ignore: cast_nullable_to_non_nullable
-              as bool,
       arguments: freezed == arguments ? _value.arguments : arguments,
+      pushExecuted: null == pushExecuted
+          ? _value.pushExecuted
+          : pushExecuted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      popExecuted: null == popExecuted
+          ? _value.popExecuted
+          : popExecuted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -115,8 +134,9 @@ class __$$_RoutingStateCopyWithImpl<$Res>
 class _$_RoutingState with DiagnosticableTreeMixin implements _RoutingState {
   const _$_RoutingState(
       {required this.routeName,
-      this.firePop = false,
-      this.arguments = const {}});
+      this.arguments = null,
+      this.pushExecuted = true,
+      this.popExecuted = true});
 
   factory _$_RoutingState.fromJson(Map<String, dynamic> json) =>
       _$$_RoutingStateFromJson(json);
@@ -125,14 +145,17 @@ class _$_RoutingState with DiagnosticableTreeMixin implements _RoutingState {
   final String routeName;
   @override
   @JsonKey()
-  final bool firePop;
+  final Object? arguments;
   @override
   @JsonKey()
-  final Object? arguments;
+  final bool pushExecuted;
+  @override
+  @JsonKey()
+  final bool popExecuted;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RoutingState(routeName: $routeName, firePop: $firePop, arguments: $arguments)';
+    return 'RoutingState(routeName: $routeName, arguments: $arguments, pushExecuted: $pushExecuted, popExecuted: $popExecuted)';
   }
 
   @override
@@ -141,8 +164,9 @@ class _$_RoutingState with DiagnosticableTreeMixin implements _RoutingState {
     properties
       ..add(DiagnosticsProperty('type', 'RoutingState'))
       ..add(DiagnosticsProperty('routeName', routeName))
-      ..add(DiagnosticsProperty('firePop', firePop))
-      ..add(DiagnosticsProperty('arguments', arguments));
+      ..add(DiagnosticsProperty('arguments', arguments))
+      ..add(DiagnosticsProperty('pushExecuted', pushExecuted))
+      ..add(DiagnosticsProperty('popExecuted', popExecuted));
   }
 
   @override
@@ -152,14 +176,21 @@ class _$_RoutingState with DiagnosticableTreeMixin implements _RoutingState {
             other is _$_RoutingState &&
             (identical(other.routeName, routeName) ||
                 other.routeName == routeName) &&
-            (identical(other.firePop, firePop) || other.firePop == firePop) &&
-            const DeepCollectionEquality().equals(other.arguments, arguments));
+            const DeepCollectionEquality().equals(other.arguments, arguments) &&
+            (identical(other.pushExecuted, pushExecuted) ||
+                other.pushExecuted == pushExecuted) &&
+            (identical(other.popExecuted, popExecuted) ||
+                other.popExecuted == popExecuted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, routeName, firePop,
-      const DeepCollectionEquality().hash(arguments));
+  int get hashCode => Object.hash(
+      runtimeType,
+      routeName,
+      const DeepCollectionEquality().hash(arguments),
+      pushExecuted,
+      popExecuted);
 
   @JsonKey(ignore: true)
   @override
@@ -178,8 +209,9 @@ class _$_RoutingState with DiagnosticableTreeMixin implements _RoutingState {
 abstract class _RoutingState implements RoutingState {
   const factory _RoutingState(
       {required final String routeName,
-      final bool firePop,
-      final Object? arguments}) = _$_RoutingState;
+      final Object? arguments,
+      final bool pushExecuted,
+      final bool popExecuted}) = _$_RoutingState;
 
   factory _RoutingState.fromJson(Map<String, dynamic> json) =
       _$_RoutingState.fromJson;
@@ -187,9 +219,11 @@ abstract class _RoutingState implements RoutingState {
   @override
   String get routeName;
   @override
-  bool get firePop;
-  @override
   Object? get arguments;
+  @override
+  bool get pushExecuted;
+  @override
+  bool get popExecuted;
   @override
   @JsonKey(ignore: true)
   _$$_RoutingStateCopyWith<_$_RoutingState> get copyWith =>

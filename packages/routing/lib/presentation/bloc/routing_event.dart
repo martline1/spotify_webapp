@@ -9,8 +9,12 @@ class PushEvent extends RoutingEvent {
   PushEvent(this.routeName, {this.arguments});
 }
 
+class PushEventExecuted extends RoutingEvent {}
+
 class PopEvent extends RoutingEvent {
   final bool requestingTheFireOfPop;
 
   PopEvent(this.requestingTheFireOfPop);
 }
+
+class PopEventExecuted extends RoutingEvent {}

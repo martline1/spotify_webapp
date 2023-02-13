@@ -14,12 +14,12 @@ class RouteChangeListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<RoutingBloc, RoutingState>(
       listener: (context, state) {
-        if (state is PushEvent) {
+        if (!state.pushExecuted) {
           context.goNamed(state.routeName, extra: state.arguments);
-        } else if (state is PopEvent) {
-          if (!state.firePop || !context.canPop()) return;
-
+          context.read<RoutingBloc>().add(PushEventExecuted());
+        } else if (!state.popExecuted && context.canPop()) {
           context.pop();
+          context.read<RoutingBloc>().add(PopEventExecuted());
         }
       },
       child: child,

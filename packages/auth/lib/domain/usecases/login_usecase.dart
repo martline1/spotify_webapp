@@ -6,7 +6,11 @@ import 'package:core/domain/entities/entities.dart';
 import 'package:auth/presentation/bloc/auth_bloc.dart';
 
 class LoginUsecase {
-  static Future<Either<ErrorEntity, UserDto>> call(LoginEvent event) async {
-    return AuthRepository.login(event.email, event.password);
+  final AuthRepository authRepository;
+
+  LoginUsecase({required this.authRepository});
+
+  Future<Either<ErrorEntity, UserDto>> call(LoginEvent event) async {
+    return authRepository.login(event.email, event.password);
   }
 }
