@@ -46,7 +46,7 @@ class LoginView extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<RoutingBloc>()
-                            .add(PushEvent('/auth/sing_up'));
+                            .add(PushEvent('/auth/sign_up'));
                       },
                       text: 'Sign up for Spotify',
                     ),

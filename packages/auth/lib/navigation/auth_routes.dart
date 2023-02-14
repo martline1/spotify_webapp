@@ -1,3 +1,4 @@
+import 'package:core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,26 +8,29 @@ import 'package:auth/presentation/views/views.dart';
 ///
 /// Here "/auth" is the main route for the auth module.
 /// but as soon as the user enters the auth module, it will be redirected to "/auth/login".
-final GoRoute authRoutes = GoRoute(
-  path: 'auth',
-  redirect: (context, state) => '/auth/login',
-  builder: (context, state) => const Scaffold(
-    body: Center(
-      child: Text('Auth module'),
-    ),
+final List<RouteBase> authRoutes = [
+  // Default route is login
+  Redirect(
+    path: 'auth',
+    to: '/auth/login',
   ),
-  routes: <RouteBase>[
-    GoRoute(
-      path: 'login',
-      builder: (BuildContext context, GoRouterState state) {
-        return const LoginView();
-      },
-    ),
-    GoRoute(
-      path: "sing_up",
-      builder: (BuildContext context, GoRouterState state) {
-        return const SignUpView();
-      },
-    ),
-  ],
-);
+
+  GoRoute(
+    path: 'auth',
+    builder: emptyPageBuilder,
+    routes: <RouteBase>[
+      GoRoute(
+        path: 'login',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginView();
+        },
+      ),
+      GoRoute(
+        path: "sign_up",
+        builder: (BuildContext context, GoRouterState state) {
+          return const SignUpView();
+        },
+      ),
+    ],
+  )
+];

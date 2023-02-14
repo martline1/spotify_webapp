@@ -6,13 +6,13 @@ import 'package:auth/presentation/bloc/auth_bloc.dart';
 
 class AuthDi extends DiSchema {
   @override
-  void registerBlocs() {
-    getIt.registerLazySingleton(() => AuthBloc(loginUsecase: getIt()));
+  void registerUsecases() {
+    getIt.registerLazySingleton(() => LoginUsecase(authRepository: getIt()));
   }
 
   @override
-  void registerUsecases() {
-    getIt.registerLazySingleton(() => LoginUsecase(authRepository: getIt()));
+  void registerBlocs() {
+    getIt.registerLazySingleton(() => AuthBloc(loginUsecase: getIt()));
   }
 
   @override
